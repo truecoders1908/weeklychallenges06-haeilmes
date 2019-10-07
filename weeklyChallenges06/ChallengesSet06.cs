@@ -35,7 +35,16 @@ namespace weeklyChallenges06
 
         public int MaxConsecutiveCount(int[] numbers)
         {
-            throw new NotImplementedException();
+            int[] count = new int[numbers.Length];
+            for (int x = 0; x <= numbers.Length; x++)
+            {                
+                for (int y = 0; y < numbers.Length; y++)
+                {
+                    if(numbers[y] == x)
+                        count[x]++;
+                }
+            }
+            return count.Max();
         }
 
         public double[] GetEveryNthElement(List<double> elements, int n)
