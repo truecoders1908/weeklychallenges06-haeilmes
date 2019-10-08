@@ -8,7 +8,11 @@ namespace weeklyChallenges06
     {
         public bool CollectionContainsWord(IEnumerable<string> words, string word, bool ignoreCase)
         {
-            throw new NotImplementedException();
+            if (words.Contains(word) && words != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsPrimeNumber(int num)
@@ -22,7 +26,7 @@ namespace weeklyChallenges06
                     return false;
                 }
             }
-            if(num <=1)
+            if (num <= 1)
             {
                 return false;
             }
@@ -37,10 +41,10 @@ namespace weeklyChallenges06
         {
             int[] count = new int[numbers.Length];
             for (int x = 0; x <= numbers.Length; x++)
-            {                
+            {
                 for (int y = 0; y < numbers.Length; y++)
                 {
-                    if(numbers[y] == x)
+                    if (numbers[y] == x)
                         count[x]++;
                 }
             }
@@ -49,12 +53,12 @@ namespace weeklyChallenges06
 
         public double[] GetEveryNthElement(List<double> elements, int n)
         {
-            if(n <=0 || elements == null)
+            if (n <= 0 || elements == null)
             {
                 double[] wrong = new double[0];
                 return wrong;
             }
-           return elements.Where((x, i) => (i+1) % n == 0).ToArray();
+            return elements.Where((x, i) => (i + 1) % n == 0).ToArray();
         }
     }
 }
