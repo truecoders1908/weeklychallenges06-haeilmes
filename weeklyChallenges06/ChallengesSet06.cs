@@ -8,7 +8,18 @@ namespace weeklyChallenges06
     {
         public bool CollectionContainsWord(IEnumerable<string> words, string word, bool ignoreCase)
         {
-            if (words.Contains(word) && words != null)
+            if(words is null || words.Contains(null))
+            {
+                return false;
+            }
+            foreach(string item in words)
+            {
+                if(ignoreCase == true && item.ToLower() == word)
+                {
+                    return true;
+                }
+            }
+            if (words.Contains(word))
             {
                 return true;
             }
@@ -39,16 +50,28 @@ namespace weeklyChallenges06
 
         public int MaxConsecutiveCount(int[] numbers)
         {
-            int[] count = new int[numbers.Length];
-            for (int x = 0; x <= numbers.Length; x++)
+            int newCount;
+            int counter = 0;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                for (int y = 0; y < numbers.Length; y++)
+                newCount = 1;
+                for (int j = i + 1; j < numbers.Length; j++)
                 {
-                    if (numbers[y] == x)
-                        count[x]++;
+                    if (numbers[i] == numbers[j])
+                    {
+                        newCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (newCount > counter)
+                {
+                    counter = newCount;
                 }
             }
-            return count.Max();
+            return counter;
         }
 
         public double[] GetEveryNthElement(List<double> elements, int n)
