@@ -45,7 +45,13 @@ namespace weeklyChallenges06
         }
         public int IndexOfLastUniqueLetter(string str)
         {
-            throw new NotImplementedException();
+            char unique = str
+                .GroupBy(c => c)            
+                .Where(g => g.Count() == 1)  
+                .Select(g => g.Key)         
+                .LastOrDefault();
+            return str.IndexOf(unique);
+
         }
 
         public int MaxConsecutiveCount(int[] numbers)
